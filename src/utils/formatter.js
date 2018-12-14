@@ -1,6 +1,6 @@
 const formatter = {
   // 金额格式化
-  moneyFormat (cellValue) {
+  moneyFormatter (cellValue) {
     let html = '';
     if (!cellValue) {
       cellValue = 0
@@ -9,7 +9,7 @@ const formatter = {
     return html
   },
   // 日期格式化
-  dateFormat (date, fmt) {
+  dateFormatter (date, fmt) {
     if (date === '') {
       return null
     }

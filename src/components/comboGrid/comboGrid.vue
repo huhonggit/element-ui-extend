@@ -80,15 +80,15 @@
         default: 6
       },
       id: {
-        default: 'urid'
+        default: 'value'
       },
       text: {
-        default: 'name'
+        default: 'text'
       },
       selectValue: {
         default: ''
       },
-      showField: {
+      selectShowValue: {
         default: this.multiple ? [] : ''
       },
       filterField: {
@@ -134,7 +134,7 @@
           this.getListData();
         }
       },
-      showField: {
+      selectShowValue: {
         immediate: true,
         handler(val) {
           this.showFld = val;
@@ -146,7 +146,7 @@
       selectVal: {
         immediate: true,
         handler(val) {
-          if (val === '' || val === []) {
+          if (val === '' || val instanceof Array && val.length === 0) {
             this.val = this.multiple ? [] : ''
           }
           if ((this.showFld !== '' && this.multiple === false) || (this.showFld.length !== 0 && this.multiple === true)) {

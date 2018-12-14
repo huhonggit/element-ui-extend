@@ -54,7 +54,10 @@
         type: Boolean,
         default: false
       },
-      border: Boolean,
+      border: {
+        type: Boolean,
+        default: true
+      },
       fit: {
         type: Boolean,
         default: true
@@ -96,7 +99,9 @@
       popperClass: String,
       // 表格查询条件
       searchParam: {
-        default: {},
+        default () {
+          return {}
+        },
         type: Object
       },
       // 是否主动加载表格
@@ -269,7 +274,6 @@
       // 设置表格高度（在tab切换或者展开、收缩查询条件时都可以调用该方法）
       setTableHeight () {
         this.tableHeight = this.initTableHeight();
-        console.log(this.tableHeight);
       }
     }
   }

@@ -3,33 +3,27 @@
     <el-row>
       <el-col :span="6">
         <combo-grid
-          v-model='searchData.comboGrid1'
+          v-model="searchData.comboGrid1"
           :data-url-func="API.comboGridQuery"
-          id="value"
-          size="small"
           :multiple="true"
-          text="text">
+        >
         </combo-grid>
       </el-col>
       <el-col :span="6">
         <combo-grid
           v-model='searchData.comboGrid2'
-          :show-field="comboGrid2ShowField"
+          :select-show-value="comboGrid2ShowField"
           :data-url="API.comboGridUrl()"
-          id="value"
-          size="small"
           :multiple="true"
-          text="text">
+        >
         </combo-grid>
       </el-col>
       <el-col :span="6">
         <combo-grid
           v-model='searchData.comboGrid3'
           :data-url-func="API.comboGridQuery"
-          id="value"
-          size="small"
           :multiple="false"
-          text="text">
+        >
         </combo-grid>
       </el-col>
       <el-col :span="6">
