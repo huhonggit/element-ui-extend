@@ -1,5 +1,3 @@
-import {Validator} from 'vee-validate'
-import pub from '../assets/public'
 let regMob = /^1[34578]\d{9}$/
 let regTel = /^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/
 
