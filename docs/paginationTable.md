@@ -18,11 +18,6 @@ sidebar: auto
 - 说明: 是否主动加载表格数据
 - 备注: 设置为 `false` 时，需要手动调用表格的 `getTableData` 方法，在修改 `searchParam` 时，也不会发出请求
 
-### data-url
-- 类型: `string`
-- 默认值: `''`
-- 说明: 表格查询地址
-
 ### data-url-func
 - 类型: `function`
 - 默认值: `null`

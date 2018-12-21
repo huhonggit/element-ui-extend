@@ -111,3 +111,14 @@ export {
   validateNum,
   vaildateDecimal
 }
+
+export default {
+  validateMobile,
+  validateTel,
+  validatePhone,
+  validatePwd,
+  validateLength,
+  requiredArr,
+  validateNum,
+  vaildateDecimal
+}

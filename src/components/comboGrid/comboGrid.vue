@@ -45,9 +45,8 @@
 <script>
   import {post} from '../../utils/http'
   import Emitter from 'element-ui/src/mixins/emitter'
-
   export default {
-    name: "combo-grid",
+    name: "old-combo-grid",
     mixins: [Emitter],
     props: {
       placeholder: {
@@ -146,7 +145,10 @@
       selectVal: {
         immediate: true,
         handler(val) {
-          if (val === '' || val instanceof Array && val.length === 0) {
+          if (val === '' || val === []) {
+            this.val = this.multiple ? [] : ''
+          }
+          if (val === '') {
             this.val = this.multiple ? [] : ''
           }
           if ((this.showFld !== '' && this.multiple === false) || (this.showFld.length !== 0 && this.multiple === true)) {
@@ -247,7 +249,7 @@
                 this.val = valCopy
               }
             } else {
-              this.pageShow = false
+              this.pageShow = false;
               // ivew 的选择组件再开启远程搜索的时候在第一次加载的时候
               // 如果没数据不会出现下拉框
               this.listData = [
@@ -294,5 +296,5 @@
   }
 </script>
 <style lang="less">
-  @import "../../theme/combo-grid";
+  /*@import "../../theme/combo-grid";*/
 </style>

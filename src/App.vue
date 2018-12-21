@@ -3,7 +3,8 @@
     <el-row>
       <el-col :span="6">
         <combo-grid
-          v-model="searchData.comboGrid1"
+          v-model='searchData.comboGrid1'
+          :select-show-value="comboGrid1ShowField"
           :data-url-func="API.comboGridQuery"
           :multiple="true"
         >
@@ -13,7 +14,7 @@
         <combo-grid
           v-model='searchData.comboGrid2'
           :select-show-value="comboGrid2ShowField"
-          :data-url="API.comboGridUrl()"
+          :data-url-func="API.comboGridQuery"
           :multiple="true"
         >
         </combo-grid>
@@ -35,6 +36,7 @@
       ref="myTable"
       :data-url-func="API.paginationTableQuery"
       :search-param="searchParam"
+      :vertical-resize-offset="62"
     >
       <template slot="tableColumns">
         <el-table-column type="index" width="70"></el-table-column>
@@ -52,10 +54,12 @@
     name: 'app',
     data() {
       return {
-        comboGrid2ShowField: ['combo-grid测试数据1', 'combo-grid测试数据2'],
+        comboGrid1ShowField: [],
+        comboGrid2ShowField: ['combo-grid测试数据1', 'combo-grid测试数据2', 'combo-grid测试数据7'],
+        comboGrid3ShowField: '',
         searchData: {
           comboGrid1: [],
-          comboGrid2: [1, 2],
+          comboGrid2: [1, 2, 7],
           comboGrid3: ''
         },
         // 表格实际查询参数
@@ -69,6 +73,8 @@
       reset() {
         this.searchParam = {};
         this.comboGrid2ShowField = [];
+      },
+      testChange (a, b, c) {
       }
     }
   }

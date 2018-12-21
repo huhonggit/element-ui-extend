@@ -2,7 +2,8 @@ import axios from 'axios'
 import {post} from '../../utils/http';
 axios.defaults.timeout = 30000 // 设置请求时间
 axios.defaults.withCredentials = true
-let baseUrl = 'http://localhost:3000';
+
+let baseUrl = `${window.location.href}web`;
 
 export default {
   // 可分页下拉表格示例地址

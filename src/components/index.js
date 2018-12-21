@@ -1,6 +1,10 @@
+import '../theme/combo-grid.less';
 import comboGrid from './comboGrid';
+import '../theme/pagination-table.less';
 import paginationTable from './paginationTable';
+
 import formatter from '../utils/formatter';
+import validator from '../utils/validator';
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
@@ -8,7 +12,9 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export {
   comboGrid,
-  paginationTable
+  paginationTable,
+  formatter,
+  validator
 }
 
 const ElementUIExtend = {

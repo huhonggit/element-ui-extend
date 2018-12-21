@@ -2,10 +2,14 @@
   "name": "element-ui-extend",
   "description": "A Vue.js project",
   "version": "0.0.4",
-  "author": "",
+  "author": "heyyihai",
   "license": "MIT",
   "private": false,
   "main": "src/components/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:heyyihai/element-ui-extend.git"
+  },
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",

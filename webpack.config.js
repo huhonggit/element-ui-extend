@@ -19,22 +19,14 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
-        // use: ExtractTextPlugin.extract({
-        //   fallback: "style-loader",
-        //   use: "css-loader"
-        // })
+        use: ['vue-style-loader', 'css-loader'],
       },
       {
         test: /\.less$/,
-        // use: ExtractTextPlugin.extract({
-        //   fallback: 'style-loader',
-        //   use: ['css-loader', 'less-loader']
-        // })
-        loader: 'style-loader!css-loader!less-loader'
+        use: ExtractTextPlugin.extract({
+          use: [{loader: 'css-loader'}, {loader: 'less-loader'}],
+          fallback: 'style-loader'
+        })
       },
       {
         test: /\.vue$/,
@@ -100,7 +92,16 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    hot: true,
+    inline: true,
+    proxy: {
+      "/web/*": {
+        target: 'http://localhost:3000',
+        pathRewrite: {'^/web' : ''},
+        changeOrigin: true
+      }
+    },
   },
   performance: {
     hints: false
@@ -108,7 +109,7 @@ module.exports = {
   devtool: '#eval-source-map'
 };
 
-if (process.env.NODE_ENV === 'production') {
+if (!IS_DEV) {
   module.exports.devtool = '#source-map';
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([

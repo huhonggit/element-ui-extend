@@ -42,7 +42,7 @@
 </template>
 
 <script>
-  import {post} from '../../utils/http';
+  // import {post} from '../../utils/http';
   export default {
     name: "pagination-table",
     props: {
@@ -111,10 +111,10 @@
         type: Boolean
       },
       // 表格查询url
-      dataUrl: {
-        default: '',
-        type: String
-      },
+      // dataUrl: {
+      //   default: '',
+      //   type: String
+      // },
       // 表格请求方法名字
       dataUrlFunc: {
         type: Function,
@@ -186,7 +186,8 @@
     methods: {
       // 获取表格数据
       getTableData () {
-        if (!this.dataUrl && !this.dataUrlFunc) {
+        // if (!this.dataUrl && !this.dataUrlFunc) {
+        if (!this.dataUrlFunc) {
           return;
         }
         this.setQueryMethod().then(res => {
@@ -206,11 +207,11 @@
           [this.sortTypeField]: this.sortType,
           ...this.searchParam
         };
-        if (this.dataUrl) {
-          return post(this.dataUrl, searchData)
-        } else {
+        // if (this.dataUrl) {
+        //   return post(this.dataUrl, searchData)
+        // } else {
           return this.dataUrlFunc(searchData)
-        }
+        // }
       },
       // 每页展示条数改变
       pageSizeChange () {
@@ -280,5 +281,5 @@
 </script>
 
 <style lang="less">
-  @import "../../theme/pagination-table";
+  /*@import "../../theme/pagination-table";*/
 </style>
