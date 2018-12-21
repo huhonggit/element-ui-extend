@@ -1,7 +1,7 @@
 {
   "name": "element-ui-extend",
   "description": "A Vue.js project",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "heyyihai",
   "license": "MIT",
   "private": false,
@@ -10,6 +10,12 @@
     "type": "git",
     "url": "git@github.com:heyyihai/element-ui-extend.git"
   },
+  "keywords": [
+    "element-ui",
+    "comboGrid",
+    "paginationTable",
+    "vue"
+  ],
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",

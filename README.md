@@ -1,19 +1,15 @@
 # element-ui-extend
 
----
-
 > 这是一个基于element-ui的小项目，根据公司项目的需要，
   封装了两个经常使用的组件: ComboGrid 与 PaginationTable，
   并提供了几个常用的数据格式化与表单验证方法。
 
 ## docs
 
----
 - [element-ui-extend](https://heyyihai.github.io/element-ui-extend/)
 
 ## Getting started
 
----
 ### install dependencies
 ``` bash
 npm i element-ui-extend
