@@ -43,7 +43,6 @@
   </div>
 </template>
 <script>
-  import {post} from '../../utils/http'
   import Emitter from 'element-ui/src/mixins/emitter'
   export default {
     name: "old-combo-grid",
@@ -65,9 +64,6 @@
       },
       filterable: {
         default: true
-      },
-      dataUrl: {
-        default: ''
       },
       dataUrlFunc: {
         type: Function,
@@ -128,11 +124,6 @@
       this.getListData();
     },
     watch: {
-      dataUrl(val) {
-        if (val) {
-          this.getListData();
-        }
-      },
       selectShowValue: {
         immediate: true,
         handler(val) {
@@ -198,14 +189,15 @@
         this.originalValue = null;
       },
       setQueryMethod(param) {
-        if (this.dataUrl) {
-          return post(this.dataUrl, {
-            pageSize: this.pageSize,
-            pageNum: this.currentPage,
-            ...this.searchParam,
-            ...param
-          });
-        } else if (this.dataUrlFunc) {
+        // if (this.dataUrl) {
+        //   return post(this.dataUrl, {
+        //     pageSize: this.pageSize,
+        //     pageNum: this.currentPage,
+        //     ...this.searchParam,
+        //     ...param
+        //   });
+        // } else if (this.dataUrlFunc) {
+        if (this.dataUrlFunc) {
           return this.dataUrlFunc({
             pageSize: this.pageSize,
             pageNum: this.currentPage,
@@ -215,7 +207,8 @@
         }
       },
       getListData(param) {
-        if (!this.dataUrl && !this.dataUrlFunc) {
+        // if (!this.dataUrl && !this.dataUrlFunc) {
+        if (!this.dataUrlFunc) {
           return;
         }
         this.loading = true;
@@ -295,6 +288,3 @@
     }
   }
 </script>
-<style lang="less">
-  /*@import "../../theme/combo-grid";*/
-</style>

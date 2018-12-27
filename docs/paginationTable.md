@@ -7,35 +7,35 @@ sidebar: auto
 ## 扩展API
 
 ### search-param
-- 类型: `object`
+- 类型: `Object`
 - 默认值: `{}`
 - 说明: 表格查询参数
 - 备注: `searchParam` 发生变化时，会请求数据，并将表格页数重置到第一页
 
 ### auto-load
-- 类型: `boolean`
+- 类型: `Boolean`
 - 默认值: `true`
 - 说明: 是否主动加载表格数据
 - 备注: 设置为 `false` 时，需要手动调用表格的 `getTableData` 方法，在修改 `searchParam` 时，也不会发出请求
 
 ### data-url-func
-- 类型: `function`
+- 类型: `Function`
 - 默认值: `null`
 - 说明: 表格查询方法
 
 ### vertical-resize-offset
-- 类型: `number`
+- 类型: `Number`
 - 默认值: `60`
 - 说明: 设置表格体（不包括分页部分）距离页面底部的距离
 - 备注: 当页面高度只占一屏，需要将滚动条设置于表格内部时，可以设置该属性
 
 ### has-total
-- 类型: `boolean`
+- 类型: `Boolean`
 - 默认值: `true`
 - 说明: 表格底部是否有选中数据统计
 
 ### search-field
-- 类型: `object`
+- 类型: `Object`
 - 默认值: 
 ``` js
 {
@@ -50,39 +50,94 @@ sidebar: auto
 ## 表格API
 
 ### height
-- 类型: `number | string`
+- 类型: `Number | String`
 - 默认值: `true`
 - 说明: 表格底部是否有选中数据统计
 
 ### stripe
-- 类型: `boolean`
+- 类型: `Boolean`
 - 默认值: `false`
 - 说明: 是否为斑马纹 table
 
 ### border
-- 类型: `boolean`
+- 类型: `Boolean`
 - 默认值: `true`
 - 说明: 是否带有纵向边框
 
 ### fit
-- 类型: `boolean`
+- 类型: `Boolean`
 - 默认值: `true`
 - 说明: 列的宽度是否自撑开
 
 ### show-header
-- 类型: `boolean`
+- 类型: `Boolean`
 - 默认值: `true`
 - 说明: 是否显示表头
 
 ### highlight-current-row
-- 类型: `boolean`
+- 类型: `Boolean`
 - 默认值: `false`
 - 说明: 是否要高亮当前行
 
 ### current-row-key
-- 类型: `number | string`
+- 类型: `Number | String`
 - 默认值: `''`
 - 说明: 当前行的 key，只写属性
+
+### row-class-name
+- 类型: `Function({row, rowIndex})/String`
+- 默认值: `--`
+- 说明: 行的 className 的回调方法，也可以使用字符串为所有行设置一个固定的 className。
+
+### row-style
+- 类型: `Function({row, rowIndex})/Object`
+- 默认值: `--`
+- 说明: 行的 style 的回调方法，也可以使用一个固定的 Object 为所有行设置一样的 Style。
+
+### cell-class-name
+- 类型: `Function({row, column, rowIndex, columnIndex})/String`
+- 默认值: `--`
+- 说明: 单元格的 className 的回调方法，也可以使用字符串为所有单元格设置一个固定的 className。
+
+### cell-style
+- 类型: `Function({row, column, rowIndex, columnIndex})/Object`
+- 默认值: `''`
+- 说明: 单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有单元格设置一样的 Style。
+
+### header-row-class-name
+- 类型: `Function({row, rowIndex})/String`
+- 默认值: `--`
+- 说明: 表头行的 className 的回调方法，也可以使用字符串为所有表头行设置一个固定的 className。
+
+### header-row-style
+- 类型: `Function({row, rowIndex})/Object`
+- 默认值: `--`
+- 说明: 表头行的 style 的回调方法，也可以使用一个固定的 Object 为所有表头行设置一样的 Style。
+
+### empty-text
+- 类型: `String`
+- 默认值: `暂无数据`
+- 说明: 空数据时显示的文本内容，也可以通过 slot="empty" 设置
+
+### span-method
+- 类型: `Function({ row, column, rowIndex, columnIndex })`
+- 默认值: `--`
+- 说明: 合并行或列的计算方法
+
+### show-summary
+- 类型: `Boolean`
+- 默认值: `false`
+- 说明: 是否在表尾显示合计行
+
+### sum-text
+- 类型: `String`
+- 默认值: `合计`
+- 说明: 	合计行第一列的文本
+
+### summary-method
+- 类型: `Function({ columns, data })`
+- 默认值: `--`
+- 说明: 自定义的合计计算方法
 
 ## 分页API
 

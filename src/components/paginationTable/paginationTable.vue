@@ -11,6 +11,18 @@
     :show-header="showHeader"
     :highlight-current-row="highlightCurrentRow"
     :current-row-key="currentRowKey"
+    :row-class-name="rowClassName"
+    :row-style="rowStyle"
+    :cell-class-name="cellClassName"
+    :cell-style="cellStyle"
+    :header-row-class-name="headerRowClassName"
+    :header-row-style="headerRowStyle"
+    :empty-text="emptyText"
+    :span-method="spanMethod"
+    :show-summary="showSummary"
+    :sum-text="sumText"
+    :summary-method="summaryMethod"
+
     v-loading="loading"
     @select="selectChange"
     @select-all="selectALL"
@@ -20,6 +32,7 @@
     @sort-change="sortChange"
   >
     <slot name="tableColumns"></slot>
+    <slot name="empty"></slot>
   </el-table>
   <div class="page-wrap">
     <el-pagination
@@ -73,6 +86,23 @@
       currentRowKey: {
         type: [Number, String]
       },
+      rowClassName: [String, Function],
+      rowStyle: [Object, Function],
+      cellClassName: [String, Function],
+      cellStyle: [Object, Function],
+      headerRowClassName: [String, Function],
+      headerRowStyle: [Object, Function],
+      emptyText: String,
+      spanMethod: Function,
+      showSummary: {
+        type: Boolean,
+        default: false
+      },
+      sumText: {
+        type: String,
+        default: '合计'
+      },
+      summaryMethod: Function,
       // 分页prop
       small: Boolean,
       background: {
@@ -279,7 +309,3 @@
     }
   }
 </script>
-
-<style lang="less">
-  /*@import "../../theme/pagination-table";*/
-</style>

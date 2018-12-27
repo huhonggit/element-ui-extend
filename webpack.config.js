@@ -106,7 +106,10 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    new ExtractTextPlugin("element-extend-theme.css")
+  ]
 };
 
 if (!IS_DEV) {
