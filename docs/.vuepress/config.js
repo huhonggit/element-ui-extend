@@ -24,6 +24,13 @@ module.exports = {
       '/paginationTable/': [
         ['', 'API接口']
       ]
-    }
+    },
+    repo: 'heyyihai/element-ui-extend',
+    repoLabel: '查看源码',
+    docsRepo: 'heyyihai/element-ui-extend',
+    docsDir: 'docs',
+    docsBranch: 'master',
+    editLinks: true,
+    editLinkText: '帮助我们改善此页面！'
   }
 }

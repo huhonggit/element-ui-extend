@@ -2,16 +2,18 @@ var path = require('path');
 var webpack = require('webpack');
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 
 module.exports = {
-  entry: IS_DEV ? './src/main.js' : './src/components/index.js',
+  entry: IS_DEV ? './src/main.js' : './packages/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'element-ui-extend.js',
-    library: 'element-ui-extend',
+    library: 'elementUIExtend',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
@@ -24,31 +26,13 @@ module.exports = {
       {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
-          use: [{loader: 'css-loader'}, {loader: 'less-loader'}],
+          use: ['css-loader', 'less-loader'],
           fallback: 'style-loader'
         })
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
-            // other preprocessors should work out of the box, no loader config like this necessary.
-            'scss': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader'
-            ],
-            'sass': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader?indentedSyntax'
-            ]
-          }
-          // other vue-loader options go here
-        }
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
@@ -62,6 +46,7 @@ module.exports = {
         },
         include: [
           path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'packages'),
           path.resolve(__dirname, 'node_modules/element-ui/src/utils'),
           path.resolve(__dirname, 'node_modules/element-ui/src/mixins')
         ]
@@ -108,13 +93,13 @@ module.exports = {
   },
   devtool: '#eval-source-map',
   plugins: [
+    new CleanWebpackPlugin(),
     new ExtractTextPlugin("element-extend-theme.css")
   ]
 };
 
 if (!IS_DEV) {
   module.exports.devtool = '#source-map';
-  // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -130,6 +115,9 @@ if (!IS_DEV) {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-    new ExtractTextPlugin("element-extend-theme.css")
+    new HtmlWebpackPlugin({
+      minify: true,
+      title: 'element-ui-extend'
+    })
   ])
 }

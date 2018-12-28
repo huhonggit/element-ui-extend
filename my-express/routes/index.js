@@ -9,6 +9,7 @@ router.get('/', function (req, res, next) {
     let param = req.body,
       pageSize = Number(param.pageSize),
       pageNum = Number(param.pageNum),
+      filter = param.nameLike,
       rows = [],
       totalLength = 200;
     for (let i = 0; i < pageSize; i++) {
@@ -21,11 +22,20 @@ router.get('/', function (req, res, next) {
         text: `combo-grid测试数据${currentRowId}`
       })
     }
-    res.send({
-      code: '0',
-      rows,
-      total: totalLength
-    });
+    // 测试comboGrid无返回数据时使用
+    if (filter && filter === 'aaa') {
+      res.send({
+        code: '0',
+        rows: [],
+        total: totalLength
+      });
+    } else {
+      res.send({
+        code: '0',
+        rows,
+        total: totalLength
+      });
+    }
   })
   .post('/paginationTable.do', function (req, res, next) {
     let param = req.body,

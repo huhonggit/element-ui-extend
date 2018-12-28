@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {post} from '../../utils/http';
+import {post} from './http';
 axios.defaults.timeout = 30000 // 设置请求时间
 axios.defaults.withCredentials = true
 

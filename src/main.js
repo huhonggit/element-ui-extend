@@ -5,8 +5,9 @@ import axios from 'axios' // 引入axios文件
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
 import API from './assets/js/url'
-import ElementUIExtend from './components/index';
-import './theme/index.less';
+import ElementUIExtend from '../packages/index';
+// import './assets/less/index.less';
+
 
 Vue.prototype.axios = axios
 Vue.prototype.API = API

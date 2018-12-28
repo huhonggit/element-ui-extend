@@ -1,10 +1,9 @@
-import '../theme/combo-grid.less';
 import comboGrid from './comboGrid';
-import '../theme/pagination-table.less';
 import paginationTable from './paginationTable';
+import '../theme/index.less';
 
-import formatter from '../utils/formatter';
-import validator from '../utils/validator';
+import formatter from './utils/formatter';
+import validator from './utils/validator';
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
