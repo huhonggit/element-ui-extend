@@ -55,7 +55,6 @@
 </template>
 
 <script>
-  // import {post} from '../../utils/http';
   export default {
     name: "pagination-table",
     props: {
@@ -140,11 +139,6 @@
         default: true,
         type: Boolean
       },
-      // 表格查询url
-      // dataUrl: {
-      //   default: '',
-      //   type: String
-      // },
       // 表格请求方法名字
       dataUrlFunc: {
         type: Function,
@@ -216,19 +210,9 @@
     methods: {
       // 获取表格数据
       getTableData () {
-        // if (!this.dataUrl && !this.dataUrlFunc) {
         if (!this.dataUrlFunc) {
           return;
         }
-        this.setQueryMethod().then(res => {
-          if (res.code === '0') {
-            this.tableData = res.rows;
-            this.total = res.total;
-          }
-          this.loading = false
-        })
-      },
-      setQueryMethod () {
         this.loading = true;
         let searchData = {
           [this.pageNumField]: this.currentPage,
@@ -237,11 +221,13 @@
           [this.sortTypeField]: this.sortType,
           ...this.searchParam
         };
-        // if (this.dataUrl) {
-        //   return post(this.dataUrl, searchData)
-        // } else {
-          return this.dataUrlFunc(searchData)
-        // }
+        this.dataUrlFunc(searchData).then(res => {
+          if (res.code === '0') {
+            this.tableData = res.rows;
+            this.total = res.total;
+          }
+          this.loading = false
+        })
       },
       // 每页展示条数改变
       pageSizeChange () {

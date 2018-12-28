@@ -1,6 +1,5 @@
 import comboGrid from './comboGrid';
 import paginationTable from './paginationTable';
-import '../theme/index.less';
 
 import formatter from './utils/formatter';
 import validator from './utils/validator';

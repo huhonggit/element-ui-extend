@@ -8,7 +8,7 @@ const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 
 module.exports = {
-  entry: IS_DEV ? './src/main.js' : './packages/index.js',
+  entry: IS_DEV ? './src/main.js' : './packages/bundle.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
