@@ -7,9 +7,20 @@
     .el-select__input {
       margin-left: 8px;
     }
-    .el-select__caret.el-input__icon {
-      &:before {
-        content: "\E605";
+    // el-select在开启远程搜索时，会隐藏箭头图标
+    .el-input {
+      .el-select__caret.el-input__icon.el-icon- {
+        &:before {
+          content: "\E605";
+        }
+      }
+    }
+    .el-input.is-focus {
+      .el-select__caret.el-input__icon.el-icon- {
+        transform: rotate(0deg);
+        &:before {
+          content: "\E605";
+        }
       }
     }
   }
@@ -25,7 +36,7 @@
   }
 }
 
-// 下拉列表部分
+ // 下拉列表部分
 .el-select-dropdown.combo-grid-list.is-multiple {
   min-width: 250px !important;
 
@@ -64,7 +75,3 @@
   }
 }
 
-.no-data {
-  text-align: center;
-  cursor: text !important;
-}

@@ -9,6 +9,7 @@
       :collapse-tags="collapseTags"
       :clearable="clearable"
       reserve-keyword
+      popper-class="combo-grid-list"
 
       :loading="loading"
       :remote="filterable"
